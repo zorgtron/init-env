@@ -85,3 +85,8 @@ nmap =or :Tabularize /or<CR>
 " nathanaelkane/vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 0 " :IndentGuidesToggle
 
+" Key Mappings #########################################################################################################
+
+map <F7> :cp<CR>
+map <F8> :copen<CR>
+map <F9> :cn<CR>
