@@ -20,3 +20,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 defaults write com.macromates.TextMate.preview volumeSettings '{ "/" = { extendedAttributes = 0; }; }'
 
+if [[ -e "~/.profile.local" ]]; then
+    source ~/.profile.local
+fi

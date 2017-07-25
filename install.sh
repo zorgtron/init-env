@@ -25,6 +25,7 @@ echo; echo; echo "Updating brew, one moment..."
 brew update
 
 echo; echo; echo "Installing standard brew packages..."
+brew install ag
 brew install fswatch
 brew install macvim
 brew install node
