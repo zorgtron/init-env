@@ -10,8 +10,7 @@ STARTED_DATE=$(date)
 
 [[ -x "$BACKUP_COMMANDS" ]] || die "Could not find $BACKUP_COMMANDS"
     
-echo "Starting backup at $STARTED_DATE..."
-
+echo "Mounting backup volume..."
 ./backup-unmount.sh || die
 ./backup-mount.sh || die
 [[ -d "$LOCAL_MOUNT" ]] || die "Could find $LOCAL_MOUNT"
@@ -29,6 +28,6 @@ if [[ "$?" != 0 ]]; then
     tail -n10 "$LOCAL_MOUNT/backup.log"
 fi
 
-./backup-unmount.sh || echo "WARNING: Could not unmount $LOCAL_MOUNT! Please check into this!"
+#./backup-unmount.sh || echo "WARNING: Could not unmount $LOCAL_MOUNT! Please check into this!"
 echo "Finished backing up at $(date)."
 

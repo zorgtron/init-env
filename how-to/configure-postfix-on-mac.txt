@@ -1,0 +1,36 @@
+https://apple.stackexchange.com/questions/12387/how-to-send-an-email-from-command-line
+
+1. Open /etc/postfix/main.cf and add the following lines:
+
+    relayhost = [smtp.gmail.com]:587
+    smtp_sasl_auth_enable = yes
+    smtp_sasl_password_maps = hash:/etc/postfix/sasl_password
+    smtp_sasl_security_options = noanonymous
+    smtp_sasl_mechanism_filter = plain
+    smtp_use_tls = yes
+
+2. Create /etc/postfix/sasl_password
+
+    [smtp.gmail.com]:587 <email>:<password>
+
+3. Change permissions on password file
+
+    sudo chmod 600 /etc/postfix/sasl_password
+
+4. Tail the postfix logs.
+
+    log stream --predicate  '(process == "smtpd") || (process == "smtp")' --info
+
+5. Enable "less-secure" apps
+
+    First, send a test message.  This message will fail if you haven't given permission for "less
+    secure" apps.  In that case, you'll both get an error message in the log, and you'll get an
+    email from Google. Follow the link in the email and enable the feature.
+
+    If the test message goes through, then your Gmail account was already configured to allow it.
+
+    WARNING: This will slightly weaken the security of that account, so it's best not to do this
+    with an account which can receive sensitive information.
+
+    
+

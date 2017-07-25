@@ -10,3 +10,4 @@ if mount | grep -q "$LOCAL_MOUNT"; then
 fi
 [[ -e "$LOCAL_MOUNT" ]] && rm -r "$LOCAL_MOUNT"
 
+exit 0
