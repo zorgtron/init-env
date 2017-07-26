@@ -87,6 +87,9 @@ let g:indent_guides_enable_on_vim_startup = 0 " :IndentGuidesToggle
 
 " Key Mappings #########################################################################################################
 
+map <F1> :NERDTreeToggle<CR>
+map <F2> :NERDTreeFind<CR>
+map <F3> :'a,.!sort<CR>
 map <F7> :cp<CR>
 map <F8> :copen<CR>
 map <F9> :cn<CR>
