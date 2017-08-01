@@ -65,6 +65,8 @@ if executable('ag')
     set grepformat=%f:%l:%c:%m
 endif
 
+autocmd BufWritePre * %s/\s\+$//e
+
 " Configure Plugins ####################################################################################################
 
 " ctrlpvim/ctrlp.vim
