@@ -8,6 +8,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'godlygeek/tabular'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'kchmck/vim-coffee-script'
+Plug 'leafgarland/typescript-vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree'
@@ -36,7 +37,7 @@ set cmdheight=2
 set colorcolumn=120
 set cursorline
 set expandtab
-set hlsearch
+set nohlsearch
 set incsearch
 set laststatus=2
 set modelines=2
@@ -84,6 +85,7 @@ let g:vim_json_syntax_conceal = 0
 nmap == :Tabularize /=<CR>
 nmap =: :Tabularize /[^:]*:<CR>
 nmap =or :Tabularize /or<CR>
+nmap =, :Tabularize /[^,]*:<CR>
 
 " nathanaelkane/vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 0 " :IndentGuidesToggle
