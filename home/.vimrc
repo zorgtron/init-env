@@ -5,6 +5,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'elzr/vim-json'
 Plug 'flazz/vim-colorschemes'
+Plug 'gisraptor/vim-lilypond-integrator'
 Plug 'godlygeek/tabular'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'kchmck/vim-coffee-script'
