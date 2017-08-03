@@ -20,9 +20,9 @@ call plug#end()
 " Execute Basic Setup Commands #########################################################################################
 
 set background=dark
-colorscheme golden
+colorscheme zmrok
 " abra alduin badwolf Benokai birds-of-paradise black-angus brogrammer bvemu cabin camo chlordane coffee corporation
-" dark-robin feral golden greens kellys liquidcarbon night_vision obsidian solarized
+" dark-robin feral golden greens kellys liquidcarbon night_vision obsidian solarized zmrok
 "
 filetype plugin indent on
 hi ColorColumn ctermbg=8
