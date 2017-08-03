@@ -73,7 +73,7 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " ctrlpvim/ctrlp.vim
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_regexp = 1
+let g:ctrlp_regexp = 0
 if executable('ag')
     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
     let g:ctrlp_use_caching = 0
@@ -93,18 +93,24 @@ let g:indent_guides_enable_on_vim_startup = 0 " :IndentGuidesToggle
 
 " Key Mappings #########################################################################################################
 
-map <F1> :NERDTreeToggle<CR>
-map <F2> :NERDTreeFind<CR>
-map <F3> :'a,.!sort<CR>
-map <F4> :IndentGuidesToggle<CR>
-map <F5> :e<CR>
-map <F6> :set hlsearch!<CR>
-map <F7> :cp<CR>
-map <F8> :copen<CR>
-map <F9> :cn<CR>
+map <F1>  :NERDTreeToggle<CR>
+map <F2>  :NERDTreeFind<CR>
+map <F3>  :'a,.!sort<CR>
+map <F4>  :IndentGuidesToggle<CR>
+map <F5>  :e<CR>
+map <F6>  :set hlsearch!<CR>
+map <F7>  :cp<CR>
+map <F8>  :copen<CR>
+map <F9>  :cn<CR>
+map <F10> :tselect<CR>
+map <F11> :!ctags -R src test<CR>
 
 " Local Overrides ######################################################################################################
 
 if !empty(glob("$HOME/.vimrc.local"))
     source $HOME/.vimrc.local
 endif
+
+" File-Type Specific Settings ##########################################################################################
+
+autocmd BufRead COMMIT_EDITMSG set textwidth=70 colorcolumn=70
