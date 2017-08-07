@@ -14,6 +14,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree'
 Plug 'statianzo/vim-jade'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
