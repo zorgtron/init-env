@@ -16,6 +16,8 @@ pushd $HOME >/dev/null
 
 echo; echo; echo "Installing standard config files..."
 
+ln -s "$CONFIG_DIR/bin" bin
+
 for FILE in $(ls -A "$CONFIG_DIR/home"); do
     [[ -e "$FILE" ]] && rm -rf "$FILE"
     ln -s "$CONFIG_DIR/home/$FILE" "$FILE"
