@@ -1,5 +1,7 @@
 [user]
 	name = Andrew Miner
 	email = andrewminer@mac.com
+[pull]
+    rebase = true
 [push]
 	default = simple
