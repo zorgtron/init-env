@@ -6,8 +6,8 @@ function die {
 LOCAL_MOUNT="$HOME/.backup-drive"
 
 if mount | grep -q "$LOCAL_MOUNT"; then
-    umount "$LOCAL_MOUNT" || die "Could not unmount $LOCAL_MOUNT"
+    umount "$LOCAL_MOUNT" || die "[$(date)] Could not unmount $LOCAL_MOUNT"
 fi
-[[ -e "$LOCAL_MOUNT" ]] && rm -r "$LOCAL_MOUNT"
+[[ -e "$LOCAL_MOUNT" ]] && rmdir "$LOCAL_MOUNT"
 
 exit 0

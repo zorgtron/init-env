@@ -18,10 +18,9 @@ if [[ "$CONFIRM" != "Y" ]]; then
     exit 1
 fi
 
-security add-generic-password -a $USER -s backup-host     -w "$HOST"
-security add-generic-password -a $USER -s backup-share    -w "$SHARE"
-security add-generic-password -a $USER -s backup-username -w "$USERNAME"
-security add-generic-password -a $USER -s backup-password -w "$PASSWORD"
+
+echo "afp://$USERNAME:$PASSWORD@$HOST/$SHARE" > ~/.backup-cred
+chmod 600 ~/.backup-cred
 
 cp $BIN_DIR/backup-commands.default.sh "$BACKUP_COMMANDS"
 chmod u+x "$BACKUP_COMMANDS"
