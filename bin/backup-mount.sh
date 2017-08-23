@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 function die {
     echo $*; exit 1
