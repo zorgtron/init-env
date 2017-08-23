@@ -1,0 +1,5 @@
+#!/bin/bash
+
+find src -path "*$1*" | xargs touch
+find src -path "*$1*" | xargs echo
+
