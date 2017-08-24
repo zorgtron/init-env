@@ -5,11 +5,13 @@
 # directory which commonly includes data you may care about. If there are other things you want to save, be sure to
 # add them in.
 
-rsync -az --delete /Users/andrew/ ./Users/andrew \
+DIR="Users/$USER"
+
+mkdir -p $DIR
+rsync -avz --delete "/$DIR" "$DIR" \
     --exclude .DS_Store \
     --exclude .Trash \
     --exclude .dropbox \
     --exclude Dropbox \
     --exclude Library \
         --include Library/Application\ Support
-
