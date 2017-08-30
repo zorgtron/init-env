@@ -14,8 +14,10 @@ Plug 'leafgarland/typescript-vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree'
+Plug 'skammer/vim-css-color'
 Plug 'statianzo/vim-jade'
 Plug 'tpope/vim-fugitive'
+Plug 'vim-syntastic/syntastic'
 
 call plug#end()
 
@@ -39,10 +41,12 @@ set backspace=indent,eol,start
 set cmdheight=2
 set colorcolumn=120
 set cursorline
+set diffopt=filler,vertical
 set expandtab
 set nohlsearch
 set incsearch
 set laststatus=2
+set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
 set modelines=2
 set nofoldenable
 set nowrap
@@ -55,7 +59,7 @@ set showbreak="+++>"
 set showcmd
 set showmatch
 set smarttab
-set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %h%m%r%#warningmsg#%{SyntasticStatuslineFlag()}%*%=%-14.(%l,%c%V%)\ %P
 set t_Co=256
 set tabstop=4
 set textwidth=0
@@ -92,6 +96,12 @@ nmap =, :Tabularize /[^,]*:<CR>
 
 " nathanaelkane/vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 0 " :IndentGuidesToggle
+
+" vim-syntastic/syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Key Mappings #########################################################################################################
 

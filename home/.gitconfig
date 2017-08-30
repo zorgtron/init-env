@@ -1,7 +1,16 @@
 [user]
 	name = Andrew Miner
-	email = andrewminer@mac.com
+	email = aminer@looker.com
 [pull]
     rebase = true
 [push]
 	default = simple
+[merge]
+	tool = gvimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
+[diff]
+	tool = gvimdiff
+[difftool]
+	prompt = false
