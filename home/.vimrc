@@ -3,6 +3,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'digitaltoad/vim-pug'
 Plug 'elzr/vim-json'
 Plug 'flazz/vim-colorschemes'
 Plug 'gisraptor/vim-lilypond-integrator'
