@@ -8,45 +8,47 @@ fi
 CONFIG_DIR=$PWD
 
 if ! which -s brew; then
-    echo; echo; echo "Brew is not installed. Installing now..."
+    echo "Brew is not installed. Installing now..."
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 pushd $HOME >/dev/null
+  echo "Installing standard config files..."
 
-echo; echo; echo "Installing standard config files..."
+  ln -sf "$CONFIG_DIR/bin" bin
 
-ln -s "$CONFIG_DIR/bin" bin
+  for FILE in $(ls -A "$CONFIG_DIR/home"); do
+      [[ -e "$FILE" ]] && rm -rf "$FILE"
+      ln -sf "$CONFIG_DIR/home/$FILE" "$FILE"
+  done
 
-for FILE in $(ls -A "$CONFIG_DIR/home"); do
-    [[ -e "$FILE" ]] && rm -rf "$FILE"
-    ln -s "$CONFIG_DIR/home/$FILE" "$FILE"
-done
+  echo "Updating brew, one moment..."
+  brew update
 
-echo; echo; echo "Updating brew, one moment..."
-brew update
+  echo "Installing standard brew packages..."
+  which -s ag      || brew install ag
+  which -s ctags   || brew install ctags
+  which -s fswatch || brew install fswatch
+  which -s gvim    || brew install macvim
+  which -s node    || brew install node
+  which -s rbenv   || brew install rbenv
+  which -s watch   || brew install watch
+  which -s wget    || brew install wget
 
-echo; echo; echo "Installing standard brew packages..."
-brew install ag
-brew install ctags
-brew install fswatch
-brew install macvim
-brew install node
-brew install rbenv
-brew install watch
-brew install wget
+  echo "Installing standard NPM packages..."
+  which -s browserify || sudo npm install -g browserify
+  which -s coffee     || sudo npm install -g coffee-script
+  which -s grunt      || sudo npm install -g grunt-cli
+  which -s sass       || sudo npm install -g node-sass
+  which -s nodemon    || sudo npm install -g nodemon
+  which -s pug        || sudo npm install -g pug-cli
+  which -s tsc        || sudo npm install -g typescript
+  which -s tslint     || sudo npm install -g tslint
 
-echo; echo; echo "Installing standard NPM packages..."
-npm install -g browserify
-npm install -g coffee-script
-npm install -g grunt-cli
-npm install -g node-sass
-npm install -g nodemon
-npm install -g pug-cli
-
-echo; echo; read -p "Installing vi plugins, type \":qall\" when finished..."
-vi -c ":PlugInstall"
+  echo "Installing vi plugins..."
+  vim +PlugInstall +qall
 
 popd >/dev/null
-echo; echo; echo "Done."
+
+echo "Done."
 echo
