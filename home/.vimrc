@@ -2,6 +2,7 @@
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'elzr/vim-json'
@@ -10,7 +11,6 @@ Plug 'gisraptor/vim-lilypond-integrator'
 Plug 'godlygeek/tabular'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'kchmck/vim-coffee-script'
-Plug 'leafgarland/typescript-vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree'
@@ -24,10 +24,10 @@ call plug#end()
 " Execute Basic Setup Commands #########################################################################################
 
 set background=dark
-colorscheme zmrok
-" abra alduin badwolf Benokai birds-of-paradise black-angus brogrammer bvemu cabin camo chlordane coffee corporation
-" dark-robin feral golden greens kellys liquidcarbon night_vision obsidian solarized zmrok
-"
+silent! colorscheme zmrok
+" abra alduin badwolf Benokai birds-of-paradise black-angus brogrammer bvemu cabin camo chlordane coffee
+" corporation dark-robin feral golden greens kellys liquidcarbon night_vision obsidian solarized zmrok
+
 filetype plugin indent on
 hi ColorColumn ctermbg=8
 syntax on
@@ -95,13 +95,19 @@ nmap =or :Tabularize /or<CR>
 nmap =, :Tabularize /[^,]*:<CR>
 
 " nathanaelkane/vim-indent-guides
-let g:indent_guides_enable_on_vim_startup = 0 " :IndentGuidesToggle
+let g:indent_guides_enable_on_vim_startup = 0
 
 " vim-syntastic/syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol = "E>"
+let g:syntastic_style_error_symbol = "e>"
+let g:syntastic_style_warning_symbol = "w>"
+let g:syntastic_warning_symbol = "W>"
+
+let g:syntastic_typescript_checkers = ['tsc', 'tslint']
 
 " Key Mappings #########################################################################################################
 
