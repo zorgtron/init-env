@@ -109,6 +109,8 @@ let g:syntastic_warning_symbol = "W>"
 
 let g:syntastic_typescript_checkers = ['tsc', 'tslint']
 
+let g:syntastic_typescript_tslint_args = '-p .'
+
 " Key Mappings #########################################################################################################
 
 map <F1>  :NERDTreeToggle<CR>
