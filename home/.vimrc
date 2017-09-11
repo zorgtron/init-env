@@ -10,6 +10,7 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
 
 " Language Support Plugins
@@ -101,6 +102,7 @@ nmap =, :Tabularize /[^,]*:<CR>
 let g:indent_guides_enable_on_vim_startup = 0
 
 " w0rp/ale
+let g:airline#extensions#ale#enabled = 1
 let g:ale_completion_delay = 500
 let g:ale_completion_enabled = 1
 let g:ale_sign_column_always = 1
