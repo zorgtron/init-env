@@ -44,6 +44,8 @@ pushd $HOME >/dev/null
   which -s pug        || sudo npm install -g pug-cli
   which -s tsc        || sudo npm install -g typescript
   which -s tslint     || sudo npm install -g tslint
+  which -s ts-node    || sudo npm install -g ts-node
+  which -s tsserver   || sudo npm install -g typescript
 
   echo "Installing vi plugins..."
   vim +PlugInstall +qall

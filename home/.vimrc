@@ -2,23 +2,26 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'HerringtonDarkholme/yats.vim'
+" Functionality Plugins
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'digitaltoad/vim-pug'
-Plug 'elzr/vim-json'
 Plug 'flazz/vim-colorschemes'
-Plug 'gisraptor/vim-lilypond-integrator'
 Plug 'godlygeek/tabular'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'kchmck/vim-coffee-script'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree'
-Plug 'skammer/vim-css-color'
-Plug 'slim-template/vim-slim'
-Plug 'statianzo/vim-jade'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-syntastic/syntastic'
+Plug 'w0rp/ale'
+
+" Language Support Plugins
+Plug 'HerringtonDarkholme/yats.vim'      " typescript
+Plug 'digitaltoad/vim-pug'               " pug
+Plug 'elzr/vim-json'                     " json
+Plug 'gisraptor/vim-lilypond-integrator' " lilypond
+Plug 'kchmck/vim-coffee-script'          " coffeescript
+Plug 'pangloss/vim-javascript'           " javascript
+Plug 'plasticboy/vim-markdown'           " markdown
+Plug 'slim-template/vim-slim'            " slim
+Plug 'statianzo/vim-jade'                " jade
 
 call plug#end()
 
@@ -47,7 +50,6 @@ set expandtab
 set nohlsearch
 set incsearch
 set laststatus=2
-set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
 set modelines=2
 set nofoldenable
 set nowrap
@@ -60,7 +62,7 @@ set showbreak="+++>"
 set showcmd
 set showmatch
 set smarttab
-set statusline=%<%f\ %h%m%r%#warningmsg#%{SyntasticStatuslineFlag()}%*%=%-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %h%m%r%*%=%-14.(%l,%c%V%)\ %P
 set t_Co=256
 set tabstop=4
 set textwidth=0
@@ -98,19 +100,10 @@ nmap =, :Tabularize /[^,]*:<CR>
 " nathanaelkane/vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 0
 
-" vim-syntastic/syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = "E>"
-let g:syntastic_style_error_symbol = "e>"
-let g:syntastic_style_warning_symbol = "w>"
-let g:syntastic_warning_symbol = "W>"
-
-let g:syntastic_typescript_checkers = ['tsc', 'tslint']
-
-let g:syntastic_typescript_tslint_args = '-p .'
+" w0rp/ale
+let g:ale_completion_delay = 500
+let g:ale_completion_enabled = 1
+let g:ale_sign_column_always = 1
 
 " Key Mappings #########################################################################################################
 
@@ -135,3 +128,4 @@ endif
 " File-Type Specific Settings ##########################################################################################
 
 autocmd BufRead COMMIT_EDITMSG set textwidth=70 colorcolumn=70
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
