@@ -105,6 +105,10 @@ let g:indent_guides_enable_on_vim_startup = 0
 let g:airline#extensions#ale#enabled = 1
 let g:ale_completion_delay = 500
 let g:ale_completion_enabled = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_open_list = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
 let g:ale_sign_column_always = 1
 
 " Key Mappings #########################################################################################################
