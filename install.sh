@@ -48,7 +48,7 @@ pushd $HOME >/dev/null
   which -s tsserver   || sudo npm install -g typescript
 
   echo "Installing vi plugins..."
-  vim +PlugInstall +qall
+  vim +PlugClean +PlugInstall +qall
 
 popd >/dev/null
 
