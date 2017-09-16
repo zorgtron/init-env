@@ -38,6 +38,7 @@ pushd $HOME >/dev/null
   echo "Installing standard NPM packages..."
   which -s browserify || sudo npm install -g browserify
   which -s coffee     || sudo npm install -g coffee-script
+  which -s eslint     || sudo npm install -g eslint
   which -s grunt      || sudo npm install -g grunt-cli
   which -s sass       || sudo npm install -g node-sass
   which -s nodemon    || sudo npm install -g nodemon

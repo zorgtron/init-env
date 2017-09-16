@@ -18,8 +18,8 @@ Plug 'HerringtonDarkholme/yats.vim'      " typescript
 Plug 'digitaltoad/vim-pug'               " pug
 Plug 'elzr/vim-json'                     " json
 Plug 'gisraptor/vim-lilypond-integrator' " lilypond
+Plug 'isRuslan/vim-es6'                  " javascript
 Plug 'kchmck/vim-coffee-script'          " coffeescript
-Plug 'pangloss/vim-javascript'           " javascript
 Plug 'plasticboy/vim-markdown'           " markdown
 Plug 'slim-template/vim-slim'            " slim
 Plug 'statianzo/vim-jade'                " jade
