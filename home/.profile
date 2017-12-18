@@ -1,4 +1,4 @@
-export EDITOR=vi
+export EDITOR=vim
 export PS1='[\h:\w]\$ '
 export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
 export PATH=$PATH:$HOME/bin:$HOME/node_modules/.bin
