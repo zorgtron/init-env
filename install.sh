@@ -55,6 +55,10 @@ which -s tslint     || npm install -g tslint
 which -s ts-node    || npm install -g ts-node
 which -s tsserver   || npm install -g typescript
 
+echo "Installing standard Python packages..."
+which -s pylint || pip install pylint
+pip list --format=legacy | grep jedi >/dev/null || pip install jedi
+
 echo "Installing vi plugins..."
 vim +PlugClean +PlugInstall +qall
 

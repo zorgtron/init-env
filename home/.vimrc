@@ -15,9 +15,11 @@ Plug 'w0rp/ale'
 
 " Language Support Plugins
 Plug 'HerringtonDarkholme/yats.vim'      " typescript
+Plug 'davidhalter/jedi-vim'              " python autocomplete
 Plug 'digitaltoad/vim-pug'               " pug
 Plug 'elzr/vim-json'                     " json
 Plug 'gisraptor/vim-lilypond-integrator' " lilypond
+Plug 'google/yapf'                       " python
 Plug 'isRuslan/vim-es6'                  " javascript
 Plug 'kchmck/vim-coffee-script'          " coffeescript
 Plug 'plasticboy/vim-markdown'           " markdown
