@@ -103,6 +103,9 @@ nmap =, :Tabularize /[^,]*:<CR>
 " nathanaelkane/vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 0
 
+" scrooloose/nerdtree
+let NERDTreeIgnore = ['__pycache__', '\.pyc$']
+
 " w0rp/ale
 let g:airline#extensions#ale#enabled = 1
 let g:ale_completion_delay = 500
@@ -113,7 +116,8 @@ let g:ale_set_loclist = 0
 let g:ale_sign_column_always = 1
 
 let g:ale_linters = {
-      \'typescript': ['tslint', 'tsserver']
+      \'typescript': ['tslint', 'tsserver'],
+      \'python': ['pyls']
       \}
 
 " Key Mappings #########################################################################################################

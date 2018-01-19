@@ -15,8 +15,6 @@ fi
 pushd $HOME >/dev/null
   echo "Installing standard config files..."
 
-  ln -sf "$CONFIG_DIR/bin" bin
-
   for FILE in $(ls -A "$CONFIG_DIR/home"); do
       [[ -e "$FILE" ]] && rm -rf "$FILE"
       ln -sf "$CONFIG_DIR/home/$FILE" "$FILE"
@@ -30,6 +28,7 @@ echo "Installing standard brew packages..."
 which -s ag      || brew install ag
 which -s ctags   || brew install ctags
 which -s fswatch || brew install fswatch
+which -s gcc     || brew install gcc
 which -s python  || brew install python # must preceed macvim
 which -s gvim    || brew install macvim
 which -s node    || brew install node
@@ -56,7 +55,6 @@ which -s ts-node    || npm install -g ts-node
 which -s tsserver   || npm install -g typescript
 
 echo "Installing standard Python packages..."
-which -s pylint || pip install pylint
 pip list --format=legacy | grep jedi >/dev/null || pip install jedi
 
 echo "Installing vi plugins..."
