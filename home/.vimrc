@@ -22,6 +22,7 @@ Plug 'gisraptor/vim-lilypond-integrator' " lilypond
 Plug 'google/yapf'                       " python
 Plug 'isRuslan/vim-es6'                  " javascript
 Plug 'kchmck/vim-coffee-script'          " coffeescript
+Plug 'vim-scripts/mako.vim'              " mako
 Plug 'plasticboy/vim-markdown'           " markdown
 Plug 'slim-template/vim-slim'            " slim
 Plug 'statianzo/vim-jade'                " jade
@@ -116,6 +117,7 @@ let g:ale_set_loclist = 0
 let g:ale_sign_column_always = 1
 
 let g:ale_linters = {
+      \'html': [],
       \'typescript': ['tslint', 'tsserver'],
       \'python': ['pyls']
       \}
