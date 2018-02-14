@@ -41,6 +41,11 @@ pushd /usr/local/bin >/dev/null
     ln -sf python2 python
 popd >/dev/null
 
+pushd /usr >/dev/null
+    MACVIM=$(find . -name "MacVim.app" 2>/dev/null)
+    cp -r $MACVIM /Applications
+popd >/dev/null
+
 echo "Installing standard NPM packages..."
 which -s browserify || npm install -g browserify
 which -s coffee     || npm install -g coffee-script
