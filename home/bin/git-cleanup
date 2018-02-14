@@ -3,15 +3,9 @@
 git checkout master
 git pull
 
-DELETED="0"
 git branch --merged master | grep -v master | while read BRANCH; do
     git branch -d $BRANCH
-    (( DELETED = DELETED + 1 ))
 done
-
-if [[ "$DELETED" -eq "0" ]]; then
-    echo "No branches to clean up."
-fi
 
 echo "Branches remaining:"
 git branch
