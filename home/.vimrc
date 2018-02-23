@@ -32,7 +32,7 @@ call plug#end()
 " Execute Basic Setup Commands #########################################################################################
 
 set background=dark
-silent! colorscheme zmrok
+silent! colorscheme bvemu
 " abra alduin badwolf Benokai birds-of-paradise black-angus brogrammer bvemu cabin camo chlordane coffee
 " corporation dark-robin feral golden greens kellys liquidcarbon night_vision obsidian solarized zmrok
 
@@ -145,4 +145,5 @@ endif
 " File-Type Specific Settings ##########################################################################################
 
 autocmd BufRead COMMIT_EDITMSG set textwidth=70 colorcolumn=70
+autocmd BufRead *.mako set syntax=mako
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
