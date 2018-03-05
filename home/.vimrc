@@ -32,9 +32,9 @@ call plug#end()
 " Execute Basic Setup Commands #########################################################################################
 
 set background=dark
-silent! colorscheme bvemu
-" abra alduin badwolf Benokai birds-of-paradise black-angus brogrammer bvemu cabin camo chlordane coffee
-" corporation dark-robin feral golden greens kellys liquidcarbon night_vision obsidian solarized zmrok
+silent! colorscheme gruvbox
+" abra alduin badwolf Benokai birds-of-paradise black-angus brogrammer bvemu cabin camo chlordane coffee corporation
+" dark-robin feral golden greens gruvbox kellys liquidcarbon molokai night_vision obsidian solarized zmrok
 
 filetype plugin indent on
 hi ColorColumn ctermbg=8
@@ -135,6 +135,8 @@ map <F8>  :copen<CR>
 map <F9>  :cn<CR>
 map <F10> :tselect<CR>
 map <F11> :!ctags -R src test<CR>
+
+nmap ;     :BufExplorer<CR>
 
 " Local Overrides ######################################################################################################
 

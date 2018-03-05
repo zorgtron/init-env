@@ -21,6 +21,13 @@ pushd $HOME >/dev/null
   done
 popd >/dev/null
 
+echo "Setting up Git configuration..."
+git config --global user.name "Andrew Miner"
+EMAIL=$(git config --global user.email)
+read -p "Git email address ($EMAIL): " RESPONSE
+[[ "$RESPONSE" == "" ]] || EMAIL="$RESPONSE"
+git config --global user.email $EMAIL
+
 echo "Updating brew, one moment..."
 brew update
 
@@ -29,16 +36,16 @@ which -s ag      || brew install ag
 which -s ctags   || brew install ctags
 which -s fswatch || brew install fswatch
 which -s gcc     || brew install gcc
-which -s python  || brew install python # must preceed macvim
-which -s gvim    || brew install macvim
+which -s python3 || brew install python3 # must preceed macvim
+which -s gvim    || brew install macvim --with-python3
 which -s node    || brew install node
 which -s rbenv   || brew install rbenv
 which -s watch   || brew install watch
 which -s wget    || brew install wget
 
 pushd /usr/local/bin >/dev/null
-    ln -sf pip2 pip
-    ln -sf python2 python
+    ln -sf pip3 pip
+    ln -sf python3 python
 popd >/dev/null
 
 pushd /usr >/dev/null
