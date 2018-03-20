@@ -34,6 +34,7 @@ Plug 'vim-scripts/mako.vim'              " mako
 Plug 'plasticboy/vim-markdown'           " markdown
 Plug 'slim-template/vim-slim'            " slim
 Plug 'statianzo/vim-jade'                " jade
+Plug 'ljfa-ag/minetweaker-highlighting'  " ZenScript
 
 call plug#end()
 
