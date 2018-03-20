@@ -40,6 +40,7 @@ which -s python3 || brew install python3 # must preceed macvim
 which -s gvim    || brew install macvim --with-python3
 which -s node    || brew install node
 which -s rbenv   || brew install rbenv
+which -s tmux    || brew install tmux
 which -s watch   || brew install watch
 which -s wget    || brew install wget
 

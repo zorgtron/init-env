@@ -1,3 +1,11 @@
+" Install Plugged ######################################################################################################
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
+endif
+
 " Install Plugins ######################################################################################################
 
 call plug#begin('~/.vim/plugged')
@@ -54,6 +62,8 @@ set expandtab
 set nohlsearch
 set incsearch
 set laststatus=2
+set list
+set listchars=tab:>-
 set modelines=2
 set nofoldenable
 set nowrap
@@ -121,6 +131,7 @@ let g:ale_linters = {
       \'typescript': ['tslint', 'tsserver'],
       \'python': ['pyls']
       \}
+let g:ale_virtualenv_dir_names = ['usr']
 
 " Key Mappings #########################################################################################################
 
