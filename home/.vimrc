@@ -128,10 +128,10 @@ let g:ale_set_loclist = 0
 let g:ale_sign_column_always = 1
 
 let g:ale_linters = {
-      \'html': [],
-      \'typescript': ['tslint', 'tsserver'],
-      \'python': ['pyls']
-      \}
+    \'html': [],
+    \'typescript': ['tslint', 'tsserver'],
+    \'python': ['pyls']
+    \}
 let g:ale_virtualenv_dir_names = ['usr']
 
 " Key Mappings #########################################################################################################
