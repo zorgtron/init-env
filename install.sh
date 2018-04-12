@@ -32,17 +32,18 @@ echo "Updating brew, one moment..."
 brew update
 
 echo "Installing standard brew packages..."
-which -s ag      || brew install ag
-which -s ctags   || brew install ctags
-which -s fswatch || brew install fswatch
-which -s gcc     || brew install gcc
-which -s python3 || brew install python3 # must preceed macvim
-which -s gvim    || brew install macvim --with-python3
-which -s node    || brew install node
-which -s rbenv   || brew install rbenv
-which -s tmux    || brew install tmux
-which -s watch   || brew install watch
-which -s wget    || brew install wget
+which -s ag                         || brew install ag
+which -s ctags                      || brew install ctags
+which -s fswatch                    || brew install fswatch
+which -s gcc                        || brew install gcc
+which -s python3                    || brew install python3 # must preceed macvim
+which -s gvim                       || brew install macvim --with-python3
+which -s node                       || brew install node
+which -s rbenv                      || brew install rbenv
+which -s tmux                       || brew install tmux
+which -s watch                      || brew install watch
+which -s wget                       || brew install wget
+which -s reattach-to-user-namespace || brew install reattach-to-user-namespace --with-wrap-pbcopy-and-pbpaste
 
 pushd /usr/local/bin >/dev/null
     ln -sf pip3 pip
