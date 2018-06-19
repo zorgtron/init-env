@@ -22,7 +22,11 @@ pushd $HOME >/dev/null
 popd >/dev/null
 
 echo "Setting up Git configuration..."
-git config --global user.name "Andrew Miner"
+NAME=$(git config --global user.name)
+read -p "Git full name ($NAME): " RESPONSE
+[[ "$RESPONSE" == "" ]] || NAME="$RESPONSE"
+git config --global user.name $NAME
+
 EMAIL=$(git config --global user.email)
 read -p "Git email address ($EMAIL): " RESPONSE
 [[ "$RESPONSE" == "" ]] || EMAIL="$RESPONSE"
