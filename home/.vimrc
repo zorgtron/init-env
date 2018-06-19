@@ -140,7 +140,7 @@ map <F1>  :NERDTreeToggle<CR>
 map <F2>  :NERDTreeFind<CR>
 map <F3>  :'a,.!sort<CR>
 map <F4>  :IndentGuidesToggle<CR>
-map <F5>  :e<CR>
+map <F5>  :e!<CR>
 map <F6>  :set hlsearch!<CR>
 map <F7>  :cp<CR>
 map <F8>  :copen<CR>
