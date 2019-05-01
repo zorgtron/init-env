@@ -40,6 +40,7 @@ which -s ag                         || brew install ag
 which -s ctags                      || brew install ctags
 which -s fswatch                    || brew install fswatch
 which -s gcc                        || brew install gcc
+which -s go                         || brew install go
 which -s python3                    || brew install python3 # must preceed macvim
 which -s gvim                       || brew install macvim --with-python3
 which -s node                       || brew install node

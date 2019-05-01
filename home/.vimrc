@@ -22,19 +22,20 @@ Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
 
 " Language Support Plugins
-Plug 'HerringtonDarkholme/yats.vim'      " typescript
-Plug 'davidhalter/jedi-vim'              " python autocomplete
-Plug 'digitaltoad/vim-pug'               " pug
-Plug 'elzr/vim-json'                     " json
-Plug 'gisraptor/vim-lilypond-integrator' " lilypond
-Plug 'google/yapf'                       " python
-Plug 'isRuslan/vim-es6'                  " javascript
-Plug 'kchmck/vim-coffee-script'          " coffeescript
-Plug 'vim-scripts/mako.vim'              " mako
-Plug 'plasticboy/vim-markdown'           " markdown
-Plug 'slim-template/vim-slim'            " slim
-Plug 'statianzo/vim-jade'                " jade
-Plug 'ljfa-ag/minetweaker-highlighting'  " ZenScript
+Plug 'HerringtonDarkholme/yats.vim'                 " typescript
+Plug 'davidhalter/jedi-vim'                         " python autocomplete
+Plug 'digitaltoad/vim-pug'                          " pug
+Plug 'elzr/vim-json'                                " json
+Plug 'fatih/vim-go'                                 " go
+Plug 'gisraptor/vim-lilypond-integrator'            " lilypond
+Plug 'google/yapf'                                  " python
+Plug 'isRuslan/vim-es6'                             " javascript
+Plug 'kchmck/vim-coffee-script'                     " coffeescript
+Plug 'ljfa-ag/minetweaker-highlighting'             " ZenScript
+Plug 'plasticboy/vim-markdown'                      " markdown
+Plug 'slim-template/vim-slim'                       " slim
+Plug 'statianzo/vim-jade'                           " jade
+Plug 'vim-scripts/mako.vim'                         " mako
 
 call plug#end()
 
@@ -122,12 +123,18 @@ let NERDTreeIgnore = ['__pycache__', '\.pyc$']
 let g:airline#extensions#ale#enabled = 1
 let g:ale_completion_delay = 500
 let g:ale_completion_enabled = 1
+let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_open_list = 1
 let g:ale_set_loclist = 0
 let g:ale_sign_column_always = 1
 
+let g:ale_fixers = {
+    \'*': ['remove_trailing_lines', 'trim_whitespace'],
+    \'go': ['gofmt', 'goimports']
+    \}
 let g:ale_linters = {
+    \'go': ['gobuild', 'golint', 'govet'],
     \'html': [],
     \'typescript': ['tslint', 'tsserver'],
     \'python': ['pyls']
@@ -138,7 +145,7 @@ let g:ale_virtualenv_dir_names = ['usr']
 
 map <F1>  :NERDTreeToggle<CR>
 map <F2>  :NERDTreeFind<CR>
-map <F3>  :'a,.!sort<CR>
+map <F3>  :'a,.!sort -fg<CR>
 map <F4>  :IndentGuidesToggle<CR>
 map <F5>  :e!<CR>
 map <F6>  :set hlsearch!<CR>
@@ -146,7 +153,6 @@ map <F7>  :cp<CR>
 map <F8>  :copen<CR>
 map <F9>  :cn<CR>
 map <F10> :tselect<CR>
-map <F11> :!ctags -R src test<CR>
 
 nmap ;     :BufExplorer<CR>
 
@@ -160,4 +166,6 @@ endif
 
 autocmd BufRead COMMIT_EDITMSG set textwidth=70 colorcolumn=70
 autocmd BufRead *.mako set syntax=mako
+autocmd BufRead *.go set noexpandtab
+autocmd BufRead *.go set listchars=tab:\ \ ,
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
