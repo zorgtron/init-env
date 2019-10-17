@@ -81,7 +81,7 @@ set smarttab
 set statusline=%<%f\ %h%m%r%*%=%-14.(%l,%c%V%)\ %P
 set t_Co=256
 set tabstop=4
-set textwidth=0
+set textwidth=120
 set virtualedit=block
 set visualbell
 set wildignore+=node_modules,log,build,dist
@@ -116,13 +116,17 @@ nmap =, :Tabularize /[^,]*:<CR>
 " nathanaelkane/vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 0
 
+ "plasticboy/vim-markdown
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
+
 " scrooloose/nerdtree
 let NERDTreeIgnore = ['__pycache__', '\.pyc$']
 
 " w0rp/ale
 let g:airline#extensions#ale#enabled = 1
 let g:ale_completion_delay = 500
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_open_list = 1
