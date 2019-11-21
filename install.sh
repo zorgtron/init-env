@@ -25,12 +25,12 @@ echo "Setting up Git configuration..."
 NAME=$(git config --global user.name)
 read -p "Git full name ($NAME): " RESPONSE
 [[ "$RESPONSE" == "" ]] || NAME="$RESPONSE"
-git config --global user.name $NAME
+git config --global user.name "$NAME"
 
 EMAIL=$(git config --global user.email)
 read -p "Git email address ($EMAIL): " RESPONSE
 [[ "$RESPONSE" == "" ]] || EMAIL="$RESPONSE"
-git config --global user.email $EMAIL
+git config --global user.email "$EMAIL"
 
 echo "Updating brew, one moment..."
 brew update
@@ -41,23 +41,18 @@ which -s ctags                      || brew install ctags
 which -s fswatch                    || brew install fswatch
 which -s gcc                        || brew install gcc
 which -s go                         || brew install go
-which -s python3                    || brew install python3 # must preceed macvim
-which -s gvim                       || brew install macvim --with-python3
+which -s heroku                     || (brew tap heroku/brew && brew install heroku)
 which -s node                       || brew install node
+which -s python3                    || brew install python3
 which -s rbenv                      || brew install rbenv
 which -s tmux                       || brew install tmux
 which -s watch                      || brew install watch
 which -s wget                       || brew install wget
-which -s reattach-to-user-namespace || brew install reattach-to-user-namespace --with-wrap-pbcopy-and-pbpaste
+which -s reattach-to-user-namespace || brew install reattach-to-user-namespace
 
 pushd /usr/local/bin >/dev/null
     ln -sf pip3 pip
     ln -sf python3 python
-popd >/dev/null
-
-pushd /usr >/dev/null
-    MACVIM=$(find . -name "MacVim.app" 2>/dev/null)
-    cp -r $MACVIM /Applications
 popd >/dev/null
 
 echo "Installing standard NPM packages..."
@@ -74,7 +69,7 @@ which -s ts-node    || npm install -g ts-node
 which -s tsserver   || npm install -g typescript
 
 echo "Installing standard Python packages..."
-pip list --format=legacy | grep jedi >/dev/null || pip install jedi
+pip list --format=freeze | grep jedi >/dev/null || pip install jedi
 
 echo "Installing vi plugins..."
 vim +PlugClean +PlugInstall +qall
