@@ -1,4 +1,5 @@
 # General Environment Variables
+export BASH_SILENCE_DEPRECATION_WARNING=1
 export EDITOR=vim
 export PS1='[\h:\w]\$ '
 export PATH=$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
