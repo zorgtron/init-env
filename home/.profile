@@ -7,6 +7,7 @@ export PATH=$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sb
 alias l='ls -GhHl'
 alias la='ls -aGhHl'
 alias clear='clear && printf "\e[3J"'
+alias tmux='TERM=xterm-256color /usr/local/bin/tmux'
 
 # Machine-Specific Configuration
 [[ -e "$HOME/.profile.local" ]] && source $HOME/.profile.local

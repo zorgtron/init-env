@@ -22,6 +22,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
 
 " Language Support Plugins
+ Plug 'Glench/Vim-Jinja2-Syntax'                     " Jinja2
 Plug 'HerringtonDarkholme/yats.vim'                 " typescript
 Plug 'davidhalter/jedi-vim'                         " python autocomplete
 Plug 'digitaltoad/vim-pug'                          " pug
@@ -35,6 +36,7 @@ Plug 'ljfa-ag/minetweaker-highlighting'             " ZenScript
 Plug 'plasticboy/vim-markdown'                      " markdown
 Plug 'slim-template/vim-slim'                       " slim
 Plug 'statianzo/vim-jade'                           " jade
+Plug 'stephpy/vim-yaml'                             " yaml
 Plug 'vim-scripts/mako.vim'                         " mako
 
 call plug#end()
@@ -135,7 +137,8 @@ let g:ale_sign_column_always = 1
 
 let g:ale_fixers = {
     \'*': ['remove_trailing_lines', 'trim_whitespace'],
-    \'go': ['gofmt', 'goimports']
+    \'go': ['gofmt', 'goimports'],
+    \'python': ['isort']
     \}
 let g:ale_linters = {
     \'go': ['gobuild', 'golint', 'govet'],
@@ -172,4 +175,5 @@ autocmd BufRead COMMIT_EDITMSG set textwidth=70 colorcolumn=70
 autocmd BufRead *.mako set syntax=mako
 autocmd BufRead *.go set noexpandtab
 autocmd BufRead *.go set listchars=tab:\ \ ,
+autocmd BufRead *.jin set syntax=jinja
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
