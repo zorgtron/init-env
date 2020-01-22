@@ -138,7 +138,7 @@ let g:ale_sign_column_always = 1
 let g:ale_fixers = {
     \'*': ['remove_trailing_lines', 'trim_whitespace'],
     \'go': ['gofmt', 'goimports'],
-    \'python': ['isort']
+    \'python': []
     \}
 let g:ale_linters = {
     \'go': ['gobuild', 'golint', 'govet'],
