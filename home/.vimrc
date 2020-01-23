@@ -144,7 +144,7 @@ let g:ale_linters = {
     \'go': ['gobuild', 'golint', 'govet'],
     \'html': [],
     \'typescript': ['tslint', 'tsserver'],
-    \'python': ['pyls']
+    \'python': ['pycodestyle', 'pydocstyle', 'pyflakes', 'pyls']
     \}
 let g:ale_virtualenv_dir_names = ['usr']
 
