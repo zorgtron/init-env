@@ -22,7 +22,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
 
 " Language Support Plugins
- Plug 'Glench/Vim-Jinja2-Syntax'                     " Jinja2
+Plug 'Glench/Vim-Jinja2-Syntax'                     " Jinja2
 Plug 'HerringtonDarkholme/yats.vim'                 " typescript
 Plug 'davidhalter/jedi-vim'                         " python autocomplete
 Plug 'digitaltoad/vim-pug'                          " pug
@@ -36,6 +36,7 @@ Plug 'ljfa-ag/minetweaker-highlighting'             " ZenScript
 Plug 'plasticboy/vim-markdown'                      " markdown
 Plug 'slim-template/vim-slim'                       " slim
 Plug 'statianzo/vim-jade'                           " jade
+Plug 'posva/vim-vue'                                " vue
 Plug 'stephpy/vim-yaml'                             " yaml
 Plug 'vim-scripts/mako.vim'                         " mako
 
@@ -122,6 +123,9 @@ let g:indent_guides_enable_on_vim_startup = 0
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 
+" posva/vim-vue
+let g:vue_pre_processors = 'detect_on_enter'
+
 " scrooloose/nerdtree
 let NERDTreeIgnore = ['__pycache__', '\.pyc$']
 
@@ -140,11 +144,13 @@ let g:ale_fixers = {
     \'go': ['gofmt', 'goimports'],
     \'python': []
     \}
+
 let g:ale_linters = {
     \'go': ['gobuild', 'golint', 'govet'],
     \'html': [],
     \'typescript': ['tslint', 'tsserver'],
     \'python': ['pycodestyle', 'pydocstyle', 'pyflakes', 'pyls']
+    \'vue': ['vls']
     \}
 let g:ale_virtualenv_dir_names = ['usr']
 
@@ -172,6 +178,7 @@ endif
 " File-Type Specific Settings ##########################################################################################
 
 autocmd BufRead COMMIT_EDITMSG set textwidth=70 colorcolumn=70
+autocmd BufRead *.coffee set textwidth=120 colorcolumn=120
 autocmd BufRead *.mako set syntax=mako
 autocmd BufRead *.go set noexpandtab
 autocmd BufRead *.go set listchars=tab:\ \ ,
