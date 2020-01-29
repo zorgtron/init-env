@@ -34,9 +34,9 @@ Plug 'isRuslan/vim-es6'                             " javascript
 Plug 'kchmck/vim-coffee-script'                     " coffeescript
 Plug 'ljfa-ag/minetweaker-highlighting'             " ZenScript
 Plug 'plasticboy/vim-markdown'                      " markdown
+Plug 'posva/vim-vue'                                " vue
 Plug 'slim-template/vim-slim'                       " slim
 Plug 'statianzo/vim-jade'                           " jade
-Plug 'posva/vim-vue'                                " vue
 Plug 'stephpy/vim-yaml'                             " yaml
 Plug 'vim-scripts/mako.vim'                         " mako
 
@@ -148,8 +148,9 @@ let g:ale_fixers = {
 let g:ale_linters = {
     \'go': ['gobuild', 'golint', 'govet'],
     \'html': [],
-    \'typescript': ['tslint', 'tsserver'],
+    \'pug': ['puglint'],
     \'python': ['pycodestyle', 'pydocstyle', 'pyflakes', 'pyls'],
+    \'typescript': ['tslint', 'tsserver'],
     \'vue': ['vls']
     \}
 let g:ale_virtualenv_dir_names = ['usr']
