@@ -127,7 +127,7 @@ let g:vim_markdown_conceal_code_blocks = 0
 let g:vue_pre_processors = 'detect_on_enter'
 
 " scrooloose/nerdtree
-let NERDTreeIgnore = ['__pycache__', '\.pyc$']
+let g:NERDTreeIgnore = ['__pycache__', '\.pyc$', 'node_modules']
 
 " w0rp/ale
 let g:airline#extensions#ale#enabled = 1
@@ -149,7 +149,7 @@ let g:ale_linters = {
     \'go': ['gobuild', 'golint', 'govet'],
     \'html': [],
     \'typescript': ['tslint', 'tsserver'],
-    \'python': ['pycodestyle', 'pydocstyle', 'pyflakes', 'pyls']
+    \'python': ['pycodestyle', 'pydocstyle', 'pyflakes', 'pyls'],
     \'vue': ['vls']
     \}
 let g:ale_virtualenv_dir_names = ['usr']
