@@ -16,6 +16,9 @@ alias tmux='TERM=xterm-256color /usr/local/bin/tmux'
 # Git Config
 source ~/bin/git-completion.sh
 
+# Java Config
+export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
+
 # Go Config
 export GOPATH=/src/go
 export GOBIN=/src/go/bin
@@ -23,8 +26,16 @@ export PATH=$PATH:$GOBIN
 
 # NodeJS Config
 export PATH=$PATH:$HOME/node_modules/.bin
+export NVM_DIR="$HOME/.nvm"
+mkdir -p $NVM_DIR &>/dev/null
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
 
 # Python Config
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 export PYTHONSTARTUP="$(python -m jedi repl)"
 
 # Ruby Config

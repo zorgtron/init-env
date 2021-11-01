@@ -43,17 +43,17 @@ which -s gcc                        || brew install gcc
 which -s go                         || brew install go
 which -s heroku                     || (brew tap heroku/brew && brew install heroku)
 which -s node                       || brew install node
-which -s python3                    || brew install python3
+which -s pyenv                      || brew install pyenv
 which -s rbenv                      || brew install rbenv
 which -s tmux                       || brew install tmux
 which -s watch                      || brew install watch
 which -s wget                       || brew install wget
 which -s reattach-to-user-namespace || brew install reattach-to-user-namespace
 
-pushd /usr/local/bin >/dev/null
-    ln -sf pip3 pip
-    ln -sf python3 python
-popd >/dev/null
+pyenv install python3.7.7
+pyenv shell python3.7.7
+pip install --upgrade pip
+pip install jedi
 
 echo "Installing standard NPM packages..."
 which -s browserify || npm install -g browserify
