@@ -22,17 +22,16 @@ Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
 
 " Language Support Plugins
-Plug 'Glench/Vim-Jinja2-Syntax'                     " Jinja2
-Plug 'HerringtonDarkholme/yats.vim'                 " typescript
 Plug 'davidhalter/jedi-vim'                         " python autocomplete
 Plug 'digitaltoad/vim-pug'                          " pug
 Plug 'elzr/vim-json'                                " json
-Plug 'fatih/vim-go'                                 " go
 Plug 'gisraptor/vim-lilypond-integrator'            " lilypond
 Plug 'google/yapf'                                  " python
-Plug 'isRuslan/vim-es6'                             " javascript
 Plug 'kchmck/vim-coffee-script'                     " coffeescript
-Plug 'ljfa-ag/minetweaker-highlighting'             " ZenScript
+Plug 'leafgarland/typescript-vim'                   " typescript
+Plug 'ljfa-ag/minetweaker-highlighting'             " zenscript
+Plug 'maxmellon/vim-jsx-pretty'                     " jsx
+Plug 'pangloss/vim-javascript'                      " javascript
 Plug 'plasticboy/vim-markdown'                      " markdown
 Plug 'posva/vim-vue'                                " vue
 Plug 'slim-template/vim-slim'                       " slim
