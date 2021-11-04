@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 git fetch -p
-git checkout master
+git checkout main
 git pull
 
-git branch --merged master | grep -v master | while read BRANCH; do
+git branch --merged main | grep -v main | while read BRANCH; do
     git branch -d $BRANCH
 done
 
