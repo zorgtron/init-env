@@ -50,14 +50,14 @@ which -s watch                      || brew install watch
 which -s wget                       || brew install wget
 which -s reattach-to-user-namespace || brew install reattach-to-user-namespace
 
-pyenv install python3.7.7
-pyenv shell python3.7.7
+pyenv install python3.8.12
+pyenv global python3.8.12
 pip install --upgrade pip
 pip install jedi
 
 echo "Installing standard NPM packages..."
 which -s browserify || npm install -g browserify
-which -s coffee     || npm install -g coffee-script
+which -s coffee     || npm install -g coffeescript
 which -s eslint     || npm install -g eslint
 which -s grunt      || npm install -g grunt-cli
 which -s sass       || npm install -g node-sass
