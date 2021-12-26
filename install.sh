@@ -8,8 +8,22 @@ fi
 CONFIG_DIR=$PWD
 DID_UPDATE_BREW="NO"
 
-USAGE=$(cat <<< END
-USAGE: $0
+USAGE=$(cat <<-END
+USAGE: $0 <package>|all
+
+    This script bootstraps your shell environment by installing configs,
+    installers (e.g., brew), and useful programs.  The following packages are
+    supported:
+
+    configs         only install shell config files
+    coffeescript    install coffeescript language tools
+    go              install go language tools
+    heroku          install the Heroku CLI
+    node            install NodeJS language tools
+    python          install Python language tools
+    ruby            install Ruby language tools
+    typescript      install TypeScript language tools
+    webtools        install tools for web development
 END
 )
 
@@ -30,7 +44,6 @@ function __configure_git() {
 
 function __install_all() {
     __install_configs
-    __configure_git
 
     __install_brew
     __install_basics
@@ -43,8 +56,8 @@ function __install_all() {
     __install_node
     __install_python
     __install_ruby
-    __install_webtools
     __install_typescript
+    __install_webtools
 }
 
 function __install_brew() {
@@ -52,6 +65,30 @@ function __install_brew() {
         echo "Brew is not installed. Installing now..."
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         __update_brew
+    fi
+}
+
+function __install_with() {
+    INSTALLER="$1"
+    PACKAGE="$2"
+    CHECK="$3"
+    OPTS=""
+
+    [[ "$CHECK" == "" ]] && CHECK="$PACKAGE"
+
+    if ! which -s "$CHECK"; then
+        if [[ "$INSTALLER" == "brew" ]]; then
+            __update_brew
+        elif [[ "$INSTALLER" == "npm" ]]; then
+            __install_node
+            OPTS="-g"
+        elif [[ "$InSTALLER" == "pip" ]]; then
+            __install_python
+        fi
+
+        $INSTALLER install $OPTS $PACKAGE
+    else
+        echo "$CHECK was already installed"
     fi
 }
 
@@ -69,96 +106,89 @@ function __update_brew() {
 # Package Functions ####################################################################################################
 
 function __install_basics() {
-    __update_brew
-
-    which -s ag      || brew install ag
-    which -s ctags   || brew install ctags
-    which -s fswatch || brew install fswatch
-    which -s tmux    || brew install tmux
-    which -s watch   || brew install watch
-    which -s wget    || brew install wget
-
-    which -s reattach-to-user-namespace || brew install reattach-to-user-namespace
+    __install_with brew ag
+    __install_with brew ctags
+    __install_with brew fswatch
+    __install_with brew reattach-to-user-namespace
+    __install_with brew tmux
+    __install_with brew tmuxinator
+    __install_with brew watch
+    __install_with brew wget
 }
 
 function __install_coffeescript() {
-    __install_node
-
-    which -s coffee || npm install -g coffeescript
+    __install_with npm coffeescript
 }
 
 function __install_configs() {
     pushd $HOME >/dev/null
-      echo "Installing standard config files..."
+        echo "Installing standard config files..."
 
-      for FILE in $(ls -A "$CONFIG_DIR/home"); do
-          [[ -e "$FILE" ]] && rm -rf "$FILE"
-          ln -sf "$CONFIG_DIR/home/$FILE" "$FILE"
-      done
+        for FILE in $(ls -A "$CONFIG_DIR/home"); do
+            [[ -e "$FILE" ]] && rm -rf "$FILE"
+            ln -sf "$CONFIG_DIR/home/$FILE" "$FILE"
+        done
+
+        __configure_git
     popd >/dev/null
 }
 
 function __install_gcc() {
-    __update_brew
-
-    which -s gcc || brew install gcc
+    __install_with brew gcc
 }
 
 function __install_go() {
-    __update_brew
-
-    which -s go || brew install go
+    __install_with brew go
 }
 
 function __install_heroku() {
-    __update_brew
-
-    which -s heroku || (brew tap heroku/brew && brew install heroku)
+    (brew tap heroku/brew && __install_with brew heroku)
 }
 
 function __install_node() {
-    __update_brew
-
-    which -s node    || brew install node
-    which -s nodemon || npm install -g nodemon
+    __install_with brew node
+    __install_with npm nodemon
 }
 
 function __install_python() {
-    __update_brew
 
-    which -s pyenv || brew install pyenv
-    pyenv install python3.9
-    pyenv global python3.9
+    __install_with brew pyenv
+    VERSION=$(pyenv install --list | sed 's/^ *//' | grep '^3.9' | tail -1)
+
+    pyenv install -s "$VERSION"
+    pyenv global "$VERSION"
+    pyenv version
+
     pip install --upgrade pip
-    pip install jedi
+    __install_with pip jedi
 }
 
 function __install_ruby() {
-    which -s rbenv || brew install rbenv
+    __install_with brew rbenv
 }
 
 function __install_webtools() {
     __install_node
 
-    which -s browserify || npm install -g browserify
-    which -s eslint     || npm install -g eslint
-    which -s sass       || npm install -g node-sass
-    which -s pug        || npm install -g pug-cli
+    __install_with npm browserify
+    __install_with npm eslint
+    __install_with npm node-sass
+    __install_with npm pug-cli
 }
 
 function __install_typescript() {
     __install_node
 
-    which -s tsc        || npm install -g typescript
-    which -s tslint     || npm install -g tslint
-    which -s ts-node    || npm install -g ts-node
-    which -s tsserver   || npm install -g tsserver
+    __install_with npm typescript tsc
+    __install_with npm tslint
+    __install_with npm ts-node
+    __install_with npm tsserver
 }
 
 function __install_vim() {
     __upgrade_brew
 
-    ls -l $(which vim) | grep "Cellar/vim" >/dev/null || brew install vim
+    ls -l $(which vim) | grep "Cellar/vim" >/dev/null || __install_with brew vim
     vim +PlugClean +PlugInstall +qall
 }
 
@@ -167,16 +197,16 @@ function __install_vim() {
 DID_RUN="NO"
 while [[ "$1" != "" ]]; do
     FUNC="__install_$1"
-    if [[ $(type "$FUNC") == "function" ]]; then
+    if [[ $(type "$FUNC") == *"function"* ]]; then
         DID_RUN="YES"
-        FUNC
+        $FUNC
     fi
 
     shift
 done
 
 if [[ "$DID_RUN" == "NO" ]]; then
-    echo $USAGE
+    echo "$USAGE"
 fi
 
 echo
