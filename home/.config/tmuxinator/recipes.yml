@@ -1,0 +1,11 @@
+# /Users/andrewminer/.config/tmuxinator/recipes.yml
+
+name: recipes
+root: /src/recipes
+
+windows:
+  - main:
+      layout: 7def,157x80,0,0[157x70,0,0,0,157x9,0,71,1]
+      panes:
+        - vim
+        - ./build server
