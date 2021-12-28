@@ -1,0 +1,18 @@
+# /Users/andrewminer/.config/tmuxinator/stemma.yml
+
+name: stemma
+root: /src/stemma
+
+startup_window: terminal
+
+windows:
+  - neo4j: docker-compose -f docker-compose-localdev.yml up neo4j
+  - elasticsearch: docker-compose -f docker-compose-localdev.yml up elasticsearch
+  - webpack:
+      root: /src/stemma/frontend/amundsen_application/static
+      panes: npm run watch
+  - server:
+      panes: ./server.sh
+      root: /src/stemma/frontend
+  - editor: vim
+  - terminal:
