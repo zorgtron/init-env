@@ -121,6 +121,7 @@ function __install_coffeescript() {
 }
 
 function __install_configs() {
+    sudo chpass -s /bin/bash $USER
     pushd $HOME >/dev/null
         echo "Installing standard config files..."
 
