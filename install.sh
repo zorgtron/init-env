@@ -134,6 +134,11 @@ function __install_configs() {
     popd >/dev/null
 }
 
+function __install_docker() {
+    __install_with brew awscli aws
+    __install_with brew derailed/k9s/k9s k9s
+}
+
 function __install_gcc() {
     __install_with brew gcc
 }
