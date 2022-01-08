@@ -17,6 +17,7 @@ USAGE: $0 <package>|all
 
     configs         only install shell config files
     coffeescript    install coffeescript language tools
+    games           install command-line game runners
     go              install go language tools
     heroku          install the Heroku CLI
     node            install NodeJS language tools
@@ -137,6 +138,10 @@ function __install_configs() {
 function __install_docker() {
     __install_with brew awscli aws
     __install_with brew derailed/k9s/k9s k9s
+}
+
+function __install_games() {
+    __install_with brew frobtads
 }
 
 function __install_gcc() {
