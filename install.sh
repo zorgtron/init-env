@@ -157,17 +157,23 @@ function __install_heroku() {
 }
 
 function __install_node() {
-    __install_with brew node
-    :q
-
+    if [[ ! -e "/usr/local/opt/nvm/nvm.sh" ]]; then
+        __install_with brew nvm
+        echo "NVM has been installed, but you need to restart your shell to continue."
+        echo "Re-run '$0 node' when you have restarted."
+        exit 1
+    else
+        source /usr/local/opt/nvm/nvm.sh
+    fi
+    nvm install 12
+    nvm use 12
 
     __install_with npm nodemon
 }
 
 function __install_python() {
-
     __install_with brew pyenv
-    VERSION=$(pyenv install --list | sed 's/^ *//' | grep '^3.9' | tail -1)
+    VERSION=$(pyenv install --list | sed 's/^ *//' | grep '^3.10' | tail -1)
 
     pyenv install -s "$VERSION"
     pyenv global "$VERSION"
