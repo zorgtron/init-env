@@ -81,10 +81,10 @@ function __install_with() {
         if [[ "$INSTALLER" == "brew" ]]; then
             __update_brew
         elif [[ "$INSTALLER" == "npm" ]]; then
-            __install_node
+            which -s node || __install_node
             OPTS="-g"
         elif [[ "$InSTALLER" == "pip" ]]; then
-            __install_python
+            which -s python || __install_python
         fi
 
         $INSTALLER install $OPTS $PACKAGE
@@ -158,6 +158,9 @@ function __install_heroku() {
 
 function __install_node() {
     __install_with brew node
+    :q
+
+
     __install_with npm nodemon
 }
 
