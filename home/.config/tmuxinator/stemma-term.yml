@@ -1,0 +1,9 @@
+# /Users/andrewminer/.config/tmuxinator/stemma-term.yml
+
+name: stemma-term
+root: /src/stemma/frontend/amundsen_application/static/
+
+startup_window: terminal
+
+windows:
+  - terminal: nvm use

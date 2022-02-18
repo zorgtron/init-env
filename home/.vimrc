@@ -150,6 +150,7 @@ let g:ale_fixers = {
 let g:ale_linters = {
     \'go': ['gobuild', 'golint', 'govet'],
     \'html': [],
+    \'json': ['jsonlint'],
     \'pug': ['puglint'],
     \'python': ['pycodestyle', 'pydocstyle', 'pyflakes', 'pyls'],
     \'typescript': ['tslint', 'tsserver'],

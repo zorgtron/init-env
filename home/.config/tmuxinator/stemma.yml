@@ -6,14 +6,14 @@ root: /src/stemma
 startup_window: terminal
 
 windows:
-  - neo4j: docker-compose -f docker-compose.yml up neo4j
-  - elasticsearch: docker-compose -f docker-compose.yml up elasticsearch
+  - neo4j: docker-compose -f frontend/docker-compose.yml up neo4j
+  - elasticsearch: docker-compose -f frontend/docker-compose.yml up elasticsearch
   - databuilder:
       root: /src/stemma/databuilder
       panes: source venv/bin/activate
   - webpack:
       root: /src/stemma/frontend/amundsen_application/static
-      panes: npm run watch
+      panes: nvm use && npm run watch
   - server:
       panes: ./server.sh
       root: /src/stemma/frontend
