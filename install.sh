@@ -21,6 +21,7 @@ USAGE: $0 <package>|all
     go              install go language tools
     heroku          install the Heroku CLI
     node            install NodeJS language tools
+    postgresql      install PostgreSQL
     python          install Python language tools
     ruby            install Ruby language tools
     typescript      install TypeScript language tools
@@ -171,9 +172,15 @@ function __install_node() {
     __install_with npm nodemon
 }
 
+function __install_postgresql() {
+    __install_with brew postgresql
+    __install_with brew unixodbc
+}
+
 function __install_python() {
     __install_with brew pyenv
-    VERSION=$(pyenv install --list | sed 's/^ *//' | grep '^3.10' | tail -1)
+    VERSION="3.10.0"
+    echo "Installing Python $VERSION"
 
     pyenv install -s "$VERSION"
     pyenv global "$VERSION"
@@ -181,6 +188,7 @@ function __install_python() {
 
     pip install --upgrade pip
     __install_with pip jedi
+    __install_with pip poetry
 }
 
 function __install_ruby() {
@@ -206,7 +214,7 @@ function __install_typescript() {
 }
 
 function __install_vim() {
-    __upgrade_brew
+    __update_brew
 
     ls -l $(which vim) | grep "Cellar/vim" >/dev/null || __install_with brew vim
     vim +PlugClean +PlugInstall +qall
