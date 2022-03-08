@@ -1,7 +1,7 @@
 # /Users/andrewminer/.config/tmuxinator/recipes.yml
 
 name: recipes
-root: /src/recipes
+root: ~/src/recipes
 
 windows:
   - main:
