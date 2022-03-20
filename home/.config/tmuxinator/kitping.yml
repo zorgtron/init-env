@@ -1,0 +1,11 @@
+# /Users/andrewminer/.config/tmuxinator/kitping.yml
+
+name: kitping
+root: ~/src/kitping
+
+startup_window: editor
+
+windows:
+  - server: npm run dev
+  - editor: vim
+  - terminal:
