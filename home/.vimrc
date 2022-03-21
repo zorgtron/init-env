@@ -59,7 +59,7 @@ set autowrite
 set autowriteall
 set backspace=indent,eol,start
 set cmdheight=2
-set colorcolumn=120
+set colorcolumn=100
 set cursorline
 set diffopt=filler,vertical
 set expandtab
@@ -86,7 +86,7 @@ set smarttab
 set statusline=%<%f\ %h%m%r%*%=%-14.(%l,%c%V%)\ %P
 set t_Co=256
 set tabstop=4
-set textwidth=120
+set textwidth=100
 set virtualedit=block
 set visualbell
 set wildignore+=node_modules,log,build,dist
@@ -144,18 +144,24 @@ let g:ale_sign_column_always = 1
 let g:ale_fixers = {
     \'*': ['remove_trailing_lines', 'trim_whitespace'],
     \'go': ['gofmt', 'goimports'],
-    \'python': []
+    \'javascript': ['eslint'],
+    \'python': [],
+    \'typescript': ['eslint'],
+    \'typescriptreact': ['eslint']
     \}
 
 let g:ale_linters = {
     \'go': ['gobuild', 'golint', 'govet'],
     \'html': [],
+    \'javascript': ['eslint'],
     \'json': ['jsonlint'],
     \'pug': ['puglint'],
     \'python': ['pycodestyle', 'pydocstyle', 'pyflakes', 'pyls'],
-    \'typescript': ['tslint', 'tsserver'],
+    \'typescript': ['eslint', 'tsserver'],
+    \'typescriptreact': ['eslint', 'tsserver'],
     \'vue': ['vls']
     \}
+
 let g:ale_virtualenv_dir_names = ['usr']
 
 " Key Mappings #########################################################################################################
@@ -184,7 +190,6 @@ silent! source .vimrc.local          " project specific .vimrc
 
 autocmd BufRead COMMIT_EDITMSG set textwidth=70 colorcolumn=70
 autocmd BufRead Makefile setlocal noexpandtab
-autocmd BufRead *.coffee set textwidth=120 colorcolumn=120
 autocmd BufRead *.mako set syntax=mako
 autocmd BufRead *.go set noexpandtab
 autocmd BufRead *.go set listchars=tab:\ \ ,
