@@ -3,9 +3,8 @@
 name: kitping
 root: ~/src/kitping
 
-startup_window: editor
+pre_window: export KITPING_ENV=development; nvm use
+startup_window: terminal
 
 windows:
-  - server: npm run dev
-  - editor: vim
   - terminal:

@@ -1,5 +1,5 @@
 *.swp
 .DS_Store
+home/.config/configstore/*
 home/.vim/plugged
-update-notifier-npm.json
 plug.vim.old

@@ -131,8 +131,10 @@ let g:vue_pre_processors = 'detect_on_enter'
 " scrooloose/nerdtree
 let g:NERDTreeIgnore = ['__pycache__', '\.pyc$', 'node_modules']
 
-" w0rp/ale
+" vim-airline/vim-airline
 let g:airline#extensions#ale#enabled = 1
+
+" w0rp/ale
 let g:ale_completion_delay = 500
 let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 1
@@ -146,6 +148,7 @@ let g:ale_fixers = {
     \'go': ['gofmt', 'goimports'],
     \'javascript': ['eslint'],
     \'python': [],
+    \'scss': ['stylelint'],
     \'typescript': ['eslint'],
     \'typescriptreact': ['eslint']
     \}
