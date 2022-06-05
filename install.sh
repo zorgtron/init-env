@@ -20,6 +20,7 @@ USAGE: $0 <package>|all
 
     basics          tools like wget.
     configs         only install shell config files
+    go              install the golang compiler
     python          install Python language tools
     vim             install vim and ~/.vimrc
 END
@@ -99,6 +100,10 @@ function __install_configs() {
         done
 
     popd >/dev/null
+}
+
+function __install_go() {
+    __install_with brew go
 }
 
 function __install_python() {
