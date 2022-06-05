@@ -5,6 +5,9 @@ if [[ "$0" != "./install.sh" ]]; then
     exit 1
 fi
 
+MY_SHELL="zsh"
+SHELL_RC="~/.zshrc"
+
 CONFIG_DIR=$PWD
 DID_UPDATE_BREW="NO"
 
@@ -15,52 +18,15 @@ USAGE: $0 <package>|all
     installers (e.g., brew), and useful programs.  The following packages are
     supported:
 
+    basics          tools like wget.
     configs         only install shell config files
-    coffeescript    install coffeescript language tools
-    games           install command-line game runners
-    go              install go language tools
-    heroku          install the Heroku CLI
-    node            install NodeJS language tools
-    postgresql      install PostgreSQL
     python          install Python language tools
-    ruby            install Ruby language tools
-    typescript      install TypeScript language tools
-    webtools        install tools for web development
+    vim             install vim and ~/.vimrc
 END
 )
 
 # Base Functions #######################################################################################################
 
-function __configure_git() {
-    echo "Setting up Git configuration..."
-    NAME=$(git config --global user.name)
-    read -p "Git full name ($NAME): " RESPONSE
-    [[ "$RESPONSE" == "" ]] || NAME="$RESPONSE"
-    git config --global user.name "$NAME"
-
-    EMAIL=$(git config --global user.email)
-    read -p "Git email address ($EMAIL): " RESPONSE
-    [[ "$RESPONSE" == "" ]] || EMAIL="$RESPONSE"
-    git config --global user.email "$EMAIL"
-}
-
-function __install_all() {
-    __install_configs
-
-    __install_brew
-    __install_basics
-    __install_gcc
-    __install_vim
-
-    __install_coffeescript
-    __install_go
-    __install_heroku
-    __install_node
-    __install_python
-    __install_ruby
-    __install_typescript
-    __install_webtools
-}
 
 function __install_brew() {
     if ! which -s brew; then
@@ -118,12 +84,12 @@ function __install_basics() {
     __install_with brew wget
 }
 
-function __install_coffeescript() {
-    __install_with npm coffeescript
-}
 
 function __install_configs() {
-    sudo chpass -s /bin/bash $USER
+    # switch to zsh instead of bash.
+    sudo chsh -s "/bin/$MY_SHELL"
+    chsh -s "/bin/$MY_SHELL"
+
     pushd $HOME >/dev/null
         echo "Installing standard config files..."
 
@@ -132,85 +98,22 @@ function __install_configs() {
             ln -sf "$CONFIG_DIR/home/$FILE" "$FILE"
         done
 
-        __configure_git
     popd >/dev/null
 }
 
-function __install_docker() {
-    __install_with brew awscli aws
-    __install_with brew derailed/k9s/k9s k9s
-}
-
-function __install_games() {
-    __install_with brew frobtads
-}
-
-function __install_gcc() {
-    __install_with brew gcc
-}
-
-function __install_go() {
-    __install_with brew go
-}
-
-function __install_heroku() {
-    (brew tap heroku/brew && __install_with brew heroku)
-}
-
-function __install_node() {
-    if [[ ! -e "/usr/local/opt/nvm/nvm.sh" ]]; then
-        __install_with brew nvm
-        echo "NVM has been installed, but you need to restart your shell to continue."
-        echo "Re-run '$0 node' when you have restarted."
-        exit 1
-    else
-        source /usr/local/opt/nvm/nvm.sh
-    fi
-    nvm install 12
-    nvm use 12
-
-    __install_with npm nodemon
-}
-
-function __install_postgresql() {
-    __install_with brew postgresql
-    __install_with brew unixodbc
-}
-
 function __install_python() {
-    __install_with brew pyenv
-    VERSION="3.10.0"
+    __install_with brew miniconda
+    VERSION="3.10.4"
     echo "Installing Python $VERSION"
 
-    pyenv install -s "$VERSION"
-    pyenv global "$VERSION"
-    pyenv version
+    conda update -y conda
+    conda install -y python="$VERSION"
+    conda init "$MY_SHELL"
+    source "$SHELL_RC"
 
     pip install --upgrade pip
     __install_with pip jedi
     __install_with pip poetry
-}
-
-function __install_ruby() {
-    __install_with brew rbenv
-}
-
-function __install_webtools() {
-    __install_node
-
-    __install_with npm browserify
-    __install_with npm eslint
-    __install_with npm node-sass
-    __install_with npm pug-cli
-}
-
-function __install_typescript() {
-    __install_node
-
-    __install_with npm typescript tsc
-    __install_with npm tslint
-    __install_with npm ts-node
-    __install_with npm tsserver
 }
 
 function __install_vim() {
