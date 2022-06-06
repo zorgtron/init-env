@@ -78,6 +78,7 @@ function __install_basics() {
     __install_with brew ag
     __install_with brew ctags
     __install_with brew fswatch
+    __install_with brew nodejs
     __install_with brew reattach-to-user-namespace
     __install_with brew tmux
     __install_with brew tmuxinator
@@ -125,7 +126,7 @@ function __install_vim() {
     __update_brew
 
     ls -l $(which vim) | grep "Cellar/vim" >/dev/null || __install_with brew vim
-    vim +PlugClean +PlugInstall +qall
+    vim +PlugClean +PlugInstall +CocInstall coc-go +CocInstall coc-html +CocInstall coc-jedi +CocInstall coc-tsserver +qall
 }
 
 ########################################################################################################################
