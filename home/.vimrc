@@ -102,7 +102,7 @@ autocmd BufWritePre * %s/\s\+$//e
 " Configure Plugins ####################################################################################################
 
 
-" coc autocomplete
+" neoclide/coc.nvim
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
