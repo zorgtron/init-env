@@ -22,7 +22,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
 
 " Language Support Plugins
-Plug 'davidhalter/jedi-vim'                         " python autocomplete
 Plug 'digitaltoad/vim-pug'                          " pug
 Plug 'elzr/vim-json'                                " json
 Plug 'gisraptor/vim-lilypond-integrator'            " lilypond
@@ -31,6 +30,7 @@ Plug 'kchmck/vim-coffee-script'                     " coffeescript
 Plug 'leafgarland/typescript-vim'                   " typescript
 Plug 'ljfa-ag/minetweaker-highlighting'             " zenscript
 Plug 'maxmellon/vim-jsx-pretty'                     " jsx
+Plug 'neoclide/coc.nvim', {'branch': 'release'}     " autocomplete several languages
 Plug 'pangloss/vim-javascript'                      " javascript
 Plug 'plasticboy/vim-markdown'                      " markdown
 Plug 'posva/vim-vue'                                " vue
@@ -59,7 +59,7 @@ set autowrite
 set autowriteall
 set backspace=indent,eol,start
 set cmdheight=2
-set colorcolumn=100
+set colorcolumn=120
 set cursorline
 set diffopt=filler,vertical
 set expandtab
@@ -100,6 +100,23 @@ endif
 autocmd BufWritePre * %s/\s\+$//e
 
 " Configure Plugins ####################################################################################################
+
+
+" neoclide/coc.nvim
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ CheckBackspace() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 " ctrlpvim/ctrlp.vim
 let g:ctrlp_working_path_mode = 0
