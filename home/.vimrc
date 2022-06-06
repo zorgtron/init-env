@@ -201,6 +201,12 @@ map <F12> :ALEGoToTypeDefinition<CR>
 
 nmap '    :BufExplorer<CR>
 
+" Make adjusing split sizes a bit more friendly
+noremap <silent> <C-l> :vertical resize +3<CR>
+noremap <silent> <C-h> :vertical resize -3<CR>
+noremap <silent> <C-k> :resize +3<CR>
+noremap <silent> <C-j> :resize -3<CR>
+
 " Local Overrides ######################################################################################################
 
 silent! source $HOME/.vimrc.local    " user or machine specific .vimrc
